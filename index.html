@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>QR Access Form</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      background: #f7f7f7;
+    }
+    input, button {
+      font-size: 1.2em;
+      margin-top: 1em;
+    }
+    #result {
+      margin-top: 1em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Enter Access Code</h2>
+  <input id="code" type="text" placeholder="Enter your code here">
+  <button onclick="submitCode()">Submit</button>
+  <div id="result"></div>
+
+  <script>
+    async function submitCode() {
+      const code = document.getElementById('code').value.trim();
+      if (!code) {
+        document.getElementById('result').innerText = "Please enter a code.";
+        return;
+      }
+      document.getElementById('result').innerText = "Verifying...";
+      try {
+        const res = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+          method: 'POST',
+          body: code
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('result').innerText = "✅ Access granted.";
+        } else {
+          document.getElementById('result').innerText = "❌ Invalid code.";
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById('result').innerText = "Error contacting server.";
+      }
+    }
+  </script>
+</body>
+</html>
