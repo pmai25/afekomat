@@ -34,7 +34,7 @@
       }
       document.getElementById('result').innerText = "Verifying...";
       try {
-        const res = await fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbwXiJaTLkuvFDcGYM_kqe86uSQxXEsNmuPqBfw3XlhVOIfQnoeUEuWpshcO1MRHnmeODg/exec', {
           method: 'POST',
           body: code
         });
