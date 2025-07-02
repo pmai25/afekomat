@@ -42,7 +42,7 @@
         if (data.success) {
           document.getElementById('result').innerText = '✅ Access granted.';
         } else {
-          document.getElementById('result').innerText = '❌ Invalid code.\n${data.error}';
+          document.getElementById('result').innerText = `❌ Invalid code.\n${data.error}`;
         }
       } catch (err) {
         console.error(err);
