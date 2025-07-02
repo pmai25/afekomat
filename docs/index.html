@@ -40,9 +40,9 @@
         });
         const data = await res.json();
         if (data.success) {
-          document.getElementById('result').innerText = "✅ Access granted.";
+          document.getElementById('result').innerText = '✅ Access granted.';
         } else {
-          document.getElementById('result').innerText = "❌ Invalid code.";
+          document.getElementById('result').innerText = '❌ Invalid code.\n${data.error}';
         }
       } catch (err) {
         console.error(err);
